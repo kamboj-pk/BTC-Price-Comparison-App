@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import AmountInput from "./AmountInput";
 import LoadingSkeleton from "./LoadingSkeleton";
 import ResultRow from "./ResultRow";
-import { sortBy } from "lodash";
+import _ from 'lodash';
 import useDebouncedEffect from "use-debounced-effect";
 
 type CachedResult = {
@@ -48,8 +48,8 @@ function App() {
     [amount]
   );
 
-  const sortedCache: CachedResult[] = sortBy(cachedResults, "btc").reverse();
-  const sortedResults: CachedResult[] = sortBy(
+  const sortedCache: CachedResult[] = _.sortBy(cachedResults, "btc").reverse();
+  const sortedResults: CachedResult[] = _.sortBy(
     Object.keys(offerResults).map((provider) => ({
       provider,
       btc: offerResults[provider],
